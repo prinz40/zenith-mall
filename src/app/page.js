@@ -97,7 +97,7 @@ export default function Home(){
         <div className="bg-gradient-to-r from-yellow-400/20 via-yellow-500/10 to-black border border-yellow-400/30 rounded-2xl p-6 md:flex justify-between items-center">
           <div>
             <h4 className="font-black text-lg">🤝 Want to Supply ZenithMall?</h4>
-            <p className="text-[11px] text-white/80 mt-1 max-w-lg">Join 20 trusted Lagos suppliers. Free Delivery Included model, Pay on Delivery, Integrity Photo Proof before you get paid. God + Integrity = Long Empire.</p>
+            <p className="text-sm text-white/80 mt-1 max-w-lg">Join 20 trusted Lagos suppliers. Free Delivery Included model, Pay on Delivery, Integrity Photo Proof before you get paid. God + Integrity = Long Empire.</p>
           </div>
           <Link href="/partner" className="mt-4 md:mt-0 inline-block bg-yellow-400 text-black font-black px-8 py-3 rounded-full text-sm">Become a Partner →</Link>
         </div>
