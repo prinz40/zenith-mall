@@ -32,16 +32,17 @@ export default function ProductDetails(){
       <div className="max-w-6xl mx-auto p-6">
         <Link href="/" className="text-yellow-400 text-sm">← Back to Empire</Link>
         <div className="grid md:grid-cols-2 gap-8 mt-6">
-          <div className="bg-white/[0.04] border border-white/10 rounded-3xl p-6 flex items-center justify-center min-h-[400px]">
-            {product.image?.startsWith("data:")?
-              <img src={product.image} alt={product.name} className="w-full h-auto max-h-[450px] object-contain rounded-2xl"/> :
-              <div className="text-8xl">{product.emoji}</div>
-            }
+          <div className="bg-white/[0.04] border border-white/10 rounded-3xl p-6 flex items-center justify-center min-h-[400px] overflow-hidden">
+            {product.image? (
+              <img src={product.image} alt={product.name} className="w-full h-auto max-h-[500px] object-contain rounded-2xl hover:scale-105 transition duration-700"/>
+            ) : (
+              <div className="text-8xl">{product.emoji || "👑"}</div>
+            )}
           </div>
           <div>
-            <span className="text-[10px] tracking-widest bg-yellow-400/20 text-yellow-300 px-3 py-1 rounded-full">{product.category}</span>
+            <span className="text-[10px] tracking-widest bg-yellow-400/20 text-yellow-300 px-3 py-1 rounded-full">{product.category} • {product.tag || "Luxury"}</span>
             <h1 className="text-3xl font-black mt-4">{product.name}</h1>
-            <p className="text-white/40 text-xs mt-1">By {product.supplier || "Zenith Empire"} | Verified Partner</p>
+            <p className="text-white/40 text-xs mt-1">By {product.supplier || "Zenith Empire"} | Verified Partner • Pay on Delivery</p>
             <div className="mt-6 bg-yellow-400/10 border border-yellow-400/30 rounded-2xl p-4">
               <p className="text-3xl font-black text-yellow-400">₦{product.price?.toLocaleString()}</p>
               <p className="text-[11px] text-yellow-200/70 mt-1">✅ FREE DELIVERY INCLUDED — Total Price | No extra fee at door | Pay on Delivery</p>
@@ -50,9 +51,9 @@ export default function ProductDetails(){
 
             <div className="mt-6 flex items-center gap-4">
               <div className="flex items-center gap-3 bg-white/10 rounded-full px-4 py-2">
-                <button onClick={()=>setQty(Math.max(1,qty-1))} className="font-bold">-</button>
+                <button onClick={()=>setQty(Math.max(1,qty-1))} className="font-bold px-2">-</button>
                 <span className="font-bold">{qty}</span>
-                <button onClick={()=>setQty(qty+1)} className="font-bold">+</button>
+                <button onClick={()=>setQty(qty+1)} className="font-bold px-2">+</button>
               </div>
               <p className="text-xs text-white/40">Total ₦{(product.price*qty).toLocaleString()} — Delivery Inside</p>
             </div>
@@ -60,12 +61,13 @@ export default function ProductDetails(){
             <button onClick={addToVault} className="w-full mt-6 bg-yellow-400 text-black font-black py-4 rounded-full">Add {qty} to Vault 🛒</button>
             <Link href="/checkout" className="w-full mt-3 bg-white text-black font-bold py-3 rounded-full text-center block">Proceed to Checkout</Link>
 
-            <div className="mt-8 border-t border-white/10 pt-4">
-              <p className="text-[11px] text-white/30">🛡️ Integrity Proof required. Track with phone number. No panic.</p>
+            <div className="mt-8 border-t border-white/10 pt-4 space-y-2">
+              <p className="text-[11px] text-white/50">🚚 Lagos 1-2 Days | SW 2-3 Days | Others 3-5 Days — Track with phone number</p>
+              <p className="text-[11px] text-white/30">🛡️ Integrity Proof required. Photo + Foot proof before seller paid. No scam zone.</p>
             </div>
           </div>
         </div>
       </div>
     </div>
   )
-}
+    }
