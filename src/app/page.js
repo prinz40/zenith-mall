@@ -56,12 +56,16 @@ export default function Home(){
             const inCart = isInCart(p.id);
             return(
               <div key={p.id} className="bg-white/[0.04] border border-white/10 rounded-2xl p-4 hover:border-yellow-400/30 transition">
-                <Link href={`/product/${p.id}`}><div className="bg-gradient-to-br from-white/[0.06] to-transparent rounded-xl h-32 flex items-center justify-center text-4xl">{p.emoji || "👑"}</div></Link>
+                <Link href={`/product/${p.id}`}>
+                  <div className="bg-gradient-to-br from-white/[0.06] to-transparent rounded-xl h-48 flex items-center justify-center overflow-hidden">
+                    {p.image? <img src={p.image} alt={p.name} className="w-full h-full object-cover hover:scale-110 transition duration-700" /> : <span className="text-4xl">{p.emoji || "👑"}</span>}
+                  </div>
+                </Link>
                 <div className="p-2">
-                  <span className="text-[10px] tracking-widest bg-yellow-400/20 text-yellow-300 px-2 py-0.5 rounded-full">{p.supplier || "Zenith"}</span>
+                  <span className="text-[10px] tracking-widest bg-yellow-400/20 text-yellow-300 px-2 py-0.5 rounded-full">{p.tag || p.supplier || "Zenith"}</span>
                   <Link href={`/product/${p.id}`}><h4 className="font-bold text-sm mt-2">{p.name}</h4></Link>
                   <p className="text-yellow-400 font-bold mt-1">₦{p.price.toLocaleString()}</p>
-                  <p className="text-[10px] text-white/30 mt-1">{p.category} • Free Delivery Included</p>
+                  <p className="text-[10px] text-white/30 mt-1">{p.category || "Luxury"} • Free Delivery Included</p>
                   {inCart? <button onClick={()=>removeFromCart(p.id)} className="mt-3 w-full bg-white/10 border border-white/20 rounded-full py-2 text-xs">✓ In Vault - Remove</button> : <button onClick={()=>addToCart(p)} className="mt-3 w-full bg-yellow-400 text-black font-bold rounded-full py-2 text-xs">Add to Vault</button>}
                 </div>
               </div>
@@ -89,13 +93,11 @@ export default function Home(){
       </section>
       )}
 
-      {/* PARTNERSHIP EMPIRE BANNER - VISIBLE TO ALL SUPPLIERS */}
       <section className="max-w-7xl mx-auto px-6 pb-10">
         <div className="bg-gradient-to-r from-yellow-400/20 via-yellow-500/10 to-black border border-yellow-400/30 rounded-2xl p-6 md:flex justify-between items-center">
           <div>
             <h4 className="font-black text-lg">🤝 Want to Supply ZenithMall?</h4>
-            <p className="text-[11px] text-white/60 mt-1 max-w-lg">Join 20 trusted Lagos suppliers. Free Delivery Included model, Pay on Delivery, Integrity Photo Proof before you get paid. God + Integrity = Long Empire. Direct company contracts welcome!</p>
-            <p className="text-[10px] text-yellow-200/50 mt-2">By grace of God, we only partner with quality sellers. No panic sales.</p>
+            <p className="text-[11px] text-white/60 mt-1 max-w-lg">Join 20 trusted Lagos suppliers. Free Delivery Included model, Pay on Delivery, Integrity Photo Proof before you get paid. God + Integrity = Long Empire.</p>
           </div>
           <Link href="/partner" className="mt-4 md:mt-0 inline-block bg-yellow-400 text-black font-black px-8 py-3 rounded-full text-sm">Become a Partner →</Link>
         </div>
@@ -105,26 +107,23 @@ export default function Home(){
         <div className="bg-white/[0.03] border border-white/10 rounded-2xl p-6">
           <h4 className="font-bold text-xs text-white/60 text-center">Our Terms, Service & Guidelines</h4>
           <div className="grid md:grid-cols-3 gap-4 mt-4 text-[11px]">
-            <div><b className="text-white/70">🚚 Delivery:</b> Lagos 1-2 days, Southwest 2-3 days, others 3-5 days. There is no extra fee. Tracking via phone number. You will receive WhatsApp update.</div>
-            <div><b className="text-white/70">💳 Pay on Delivery:</b> No upfront payment. You pay when rider delivers and you confirm item is exactly as described. Full return if not as described.</div>
-            <div><b className="text-white/70">🛡️ Integrity:</b> Every delivery requires buyer photo + foot proof before seller gets paid. ZenithMall holds trust. Suppliers are verified partners only.</div>
+            <div><b className="text-white/70">🚚 Delivery:</b> Lagos 1-2 days, Southwest 2-3 days, others 3-5 days. Free. Tracking via phone.</div>
+            <div><b className="text-white/70">💳 Pay on Delivery:</b> No upfront payment. Pay when rider delivers.</div>
+            <div><b className="text-white/70">🛡️ Integrity:</b> Every delivery requires buyer photo proof before seller gets paid.</div>
           </div>
-          <p className="text-[10px] text-white/20 mt-4 text-center">By using ZenithMall you agree to honest reviews and verified supplier partnership.</p>
         </div>
       </section>
 
       <div className="flex flex-wrap gap-2 justify-center pb-6">
-        <Link href="/track" className="bg-white/10 border border-white/20 rounded-full px-4 py-2 text-xs">📦 Track Order & Drop Review</Link>
-        <Link href="/reviews" className="bg-yellow-400 text-black font-bold rounded-full px-4 py-2 text-xs">Wall of Integrity - Live Proof</Link>
+        <Link href="/track" className="bg-white/10 border border-white/20 rounded-full px-4 py-2 text-xs">📦 Track Order</Link>
+        <Link href="/reviews" className="bg-yellow-400 text-black font-bold rounded-full px-4 py-2 text-xs">Wall of Integrity</Link>
         <Link href="/admin/orders" className="bg-white/10 border border-white/20 rounded-full px-4 py-2 text-xs">Imperial Ledger</Link>
-        <Link href="/partner" className="bg-white text-black font-black rounded-full px-5 py-2 text-xs border-2 border-yellow-400">🤝 Become a Partner / Supplier</Link>
-        <Link href="/admin/add-product" className="bg-white/10 border border-white/20 rounded-full px-4 py-2 text-xs">+ Add Partnership Product</Link>
+        <Link href="/partner" className="bg-white text-black font-black rounded-full px-5 py-2 text-xs border-2 border-yellow-400">🤝 Become a Partner</Link>
       </div>
 
       <footer className="text-center text-[9px] text-white/20 pb-10">
-        © 2026 ZENITHMALL - Built on Integrity - Pay on Delivery - Proof before Pay<br/>
-        Delivery: 2-5 Days Nationwide | Service: 8am-8pm | No scam zone - God watches.
+        © 2026 ZENITHMALL - Built on Integrity<br/>Delivery: 2-5 Days Nationwide | Service: 8am-8pm | No scam zone - God watches.
       </footer>
     </div>
   )
-}
+    }
