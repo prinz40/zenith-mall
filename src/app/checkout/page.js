@@ -30,7 +30,7 @@ export default function Checkout(){
     const itemsList = cart.map(i=>`${i.name} ₦${i.price.toLocaleString()}`).join("%0A");
     const waMsg = `🔥 NEW ZENITHMALL ORDER ${id}%0A%0A${itemsList}%0A%0ATOTAL: ₦${total.toLocaleString()} (FREE DELIVERY INCLUDED)%0A%0ACustomer: ${form.name}%0APhone: ${form.phone}%0AAddress: ${form.address}, ${form.state}%0AEstimate: ${estimate}%0A%0A🛡️ Pay on Delivery`;
     // CHANGE 234XXXXXXXXX to YOUR real WhatsApp later
-    const waLink = `https://wa.me/2340000000000?text=${waMsg}`;
+    const waLink = `https://wa.me/2348104006146?text=${waMsg}`;
     localStorage.removeItem("zenith-cart");
     setCart([]);
     setDone(true);
