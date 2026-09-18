@@ -97,7 +97,7 @@ export default function Home(){
         <div className="bg-gradient-to-r from-yellow-400/20 via-yellow-500/10 to-black border border-yellow-400/30 rounded-2xl p-6 md:flex justify-between items-center">
           <div>
             <h4 className="font-black text-lg">🤝 Want to Supply ZenithMall?</h4>
-            <p className="text-[11px] text-white/60 mt-1 max-w-lg">Join 20 trusted Lagos suppliers. Free Delivery Included model, Pay on Delivery, Integrity Photo Proof before you get paid. God + Integrity = Long Empire.</p>
+            <p className="text-[11px] text-white/80 mt-1 max-w-lg">Join 20 trusted Lagos suppliers. Free Delivery Included model, Pay on Delivery, Integrity Photo Proof before you get paid. God + Integrity = Long Empire.</p>
           </div>
           <Link href="/partner" className="mt-4 md:mt-0 inline-block bg-yellow-400 text-black font-black px-8 py-3 rounded-full text-sm">Become a Partner →</Link>
         </div>
@@ -105,11 +105,11 @@ export default function Home(){
 
       <section className="max-w-7xl mx-auto px-6 pb-10">
         <div className="bg-white/[0.03] border border-white/10 rounded-2xl p-6">
-          <h4 className="font-bold text-xs text-white/60 text-center">Our Terms, Service & Guidelines</h4>
+          <h4 className="font-bold text-xs text-white/80 text-center">Our Terms, Service & Guidelines</h4>
           <div className="grid md:grid-cols-3 gap-4 mt-4 text-[11px]">
-            <div><b className="text-white/70">🚚 Delivery:</b> Lagos 1-2 days, Southwest 2-3 days, others 3-5 days. Free. Tracking via phone.</div>
-            <div><b className="text-white/70">💳 Pay on Delivery:</b> No upfront payment. Pay when rider delivers.</div>
-            <div><b className="text-white/70">🛡️ Integrity:</b> Every delivery requires buyer photo proof before seller gets paid.</div>
+            <div><b className="text-white/80">🚚 Delivery:</b> Lagos 1-2 days, Southwest 2-3 days, others 3-5 days. Free. Tracking via phone.</div>
+            <div><b className="text-white/80">💳 Pay on Delivery:</b> No upfront payment. Pay when rider delivers.</div>
+            <div><b className="text-white/80">🛡️ Integrity:</b> Every delivery requires buyer photo proof before seller gets paid.</div>
           </div>
         </div>
       </section>
