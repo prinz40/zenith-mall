@@ -30,7 +30,7 @@ export default function Checkout(){
     localStorage.setItem("zenith-orders", JSON.stringify(orders));
     const itemList = cart.map(p=>`${p.title||p.name} ₦${Number(p.price).toLocaleString()}`).join("%0A");
     const waMsg = `🔥 NEW ORDER ${id} ${status} %0A${itemList}%0ATOTAL: ₦${total.toLocaleString()} FREE DELIVERY%0AName:${form.name}%0APhone:${form.phone}%0AAddress:${form.address}%0AState:${form.state}%0ALGA:${form.lga}%0APayment:${status} ${ref}%0AEst:${estimate}`;
-    window.open(`https://wa.me/2348104006148?text=${waMsg}`,"_blank");
+    window.open(`https://wa.me/2348104006146?text=${waMsg}`,"_blank");
     localStorage.removeItem("zenith-cart"); setCart([]); setDone(true);
   };
 
@@ -50,33 +50,6 @@ export default function Checkout(){
   const placeOrder = (e) => {
     e.preventDefault();
     if(cart.length===0) return alert("Vault empty!");
-<<<<<<< HEAD
-    const id = "ZM"+Date.now().toString().slice(-6);
-    setOrderId(id);
-    const orders = JSON.parse(localStorage.getItem("zenith-orders")||"[]");
-    const newOrder = {
-      id, items: cart, total,
-      customer: form,
-      date: new Date().toLocaleString(),
-      status: "Processing — Integrity Check",
-      deliveryIncluded: true
-    };
-    orders.push(newOrder);
-    localStorage.setItem("zenith-orders", JSON.stringify(orders));
-
-    // WhatsApp message for you
-    const itemsList = cart.map(i=>`${i.name} ₦${i.price.toLocaleString()}`).join("%0A");
-    const waMsg = `🔥 NEW ZENITHMALL ORDER ${id}%0A%0A${itemsList}%0A%0ATOTAL: ₦${total.toLocaleString()} (FREE DELIVERY INCLUDED)%0A%0ACustomer: ${form.name}%0APhone: ${form.phone}%0AAddress: ${form.address}, ${form.state}%0A%0A🛡️ Pay on Delivery — Delivery fee INSIDE price`;
-    const waLink = `https://wa.me/2348104006146?text=${waMsg}`; // CHANGE to your WhatsApp number later
-
-    localStorage.removeItem("zenith-cart");
-    setCart([]);
-    setDone(true);
-    // window.open(waLink,"_blank"); // Uncomment after you put your real number
-=======
-    if(!form.lga) return alert("Please search and select LGA - very important for rider");
-    if(paymentMethod==="paystack") payWithPaystack(); else saveOrderAndNotify("Processing - Pay on Delivery");
->>>>>>> 3a37f1144263cdce37edc547919107024bf37eeb
   };
 
   if(done) return(
