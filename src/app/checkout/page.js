@@ -31,7 +31,9 @@ export default function Checkout(){
     const itemList = cart.map(p=>`${p.title||p.name} ₦${Number(p.price).toLocaleString()}`).join("%0A");
     const waMsg = `🔥 NEW ORDER ${id} ${status} %0A${itemList}%0ATOTAL: ₦${total.toLocaleString()} FREE DELIVERY%0AName:${form.name}%0APhone:${form.phone}%0AAddress:${form.address}%0AState:${form.state}%0ALGA:${form.lga}%0APayment:${status} ${ref}%0AEst:${estimate}`;
     window.open(`https://wa.me/2348104006146?text=${waMsg}`,"_blank");
-    localStorage.removeItem("zenith-cart"); setCart([]); setDone(true);
+    localStorage.removeItem("zenith-cart");
+    setCart([]);
+    setDone(true);
   };
 
   const payWithPaystack = () => {
@@ -50,6 +52,12 @@ export default function Checkout(){
   const placeOrder = (e) => {
     e.preventDefault();
     if(cart.length===0) return alert("Vault empty!");
+    if(!form.name||!form.phone||!form.address||!form.lga) return alert("Please fill Name, Phone, Address, State & LGA - very important for rider!");
+    if(paymentMethod==="paystack"){
+      payWithPaystack();
+    } else {
+      saveOrderAndNotify("Processing - Pay on Delivery");
+    }
   };
 
   if(done) return(
@@ -91,4 +99,4 @@ export default function Checkout(){
       </div>
     </div>
   )
-                                 }
+  }
